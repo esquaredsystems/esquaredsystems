@@ -1,0 +1,8 @@
+<section class="page-hero">
+  {% if include.image %}<img class="page-hero-bg" src="{{ '/assets/img/' | append: include.image | relative_url }}" alt="" aria-hidden="true">{% endif %}
+  <div class="wrap">
+    {% if include.eyebrow %}<p class="eyebrow">{{ include.eyebrow }}</p>{% endif %}
+    <h1>{{ include.title }}</h1>
+    {% if include.lead %}<p class="lead">{{ include.lead }}</p>{% endif %}
+  </div>
+</section>

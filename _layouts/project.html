@@ -1,0 +1,11 @@
+---
+layout: default
+---
+{% assign slug = page.slug | default: page.name | remove: ".md" %}
+{% assign p = site.data.projects | where: "slug", slug | first %}
+{% include page-hero.html title=page.title eyebrow=p.category lead=p.summary image=p.image %}
+<article class="wrap section prose">
+  {{ content }}
+  {% if p.link and p.link != "" %}<p><a class="btn" href="{{ p.link }}" rel="noopener">Visit project {% include icon.html name="arrow" size=18 %}</a></p>{% endif %}
+  <p><a class="link-arrow" href="{{ '/portfolio/' | relative_url }}">← All work</a></p>
+</article>

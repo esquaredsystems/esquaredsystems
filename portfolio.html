@@ -1,0 +1,37 @@
+---
+title: Portfolio
+eyebrow: Our work
+lead: Selected projects across software, integration and AI.
+permalink: /portfolio/
+hero_image: office.webp
+layout: default
+---
+{% include page-hero.html title=page.title eyebrow=page.eyebrow lead=page.lead image=page.hero_image %}
+<section class="section wrap">
+{% assign projects = site.data.projects %}
+{% if projects.size > 0 %}
+  {% assign cats = projects | map: "category" | uniq %}
+  <div class="filters" role="group" aria-label="Filter projects">
+    <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+    {% for c in cats %}<button class="chip" type="button" data-filter="{{ c | slugify }}" aria-pressed="false">{{ c }}</button>{% endfor %}
+  </div>
+  <div class="work-grid" data-filterable>
+    {% for p in projects %}
+    {% assign doc = site.projects | where_exp: "d", "d.url contains p.slug" | first %}
+    <a class="work reveal" data-category="{{ p.category | slugify }}" href="{% if doc %}{{ doc.url | relative_url }}{% else %}{{ p.link }}{% endif %}">
+      {% if p.image != "" %}<img src="{{ '/assets/img/' | append: p.image | relative_url }}" alt="" loading="lazy">{% endif %}
+      <div class="work-body"><p class="tile-cat">{{ p.category }} · {{ p.year }}</p><h3>{{ p.title }}</h3><p class="muted">{{ p.summary }}</p></div>
+    </a>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="empty reveal">
+    <img src="{{ '/assets/img/404.webp' | relative_url }}" alt="" loading="lazy">
+    <div>
+      <h2>Case studies are on the way</h2>
+      <p class="muted">We're writing up our recent work. In the meantime, we're happy to walk you through relevant projects on a call.</p>
+      <a class="btn" href="{{ '/contact/' | relative_url }}">Book a walkthrough {% include icon.html name="arrow" size=18 %}</a>
+    </div>
+  </div>
+{% endif %}
+</section>

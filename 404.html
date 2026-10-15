@@ -1,0 +1,15 @@
+---
+title: Page not found
+permalink: /404.html
+layout: default
+sitemap: false
+---
+<section class="section wrap empty notfound">
+  <img src="{{ '/assets/img/404.webp' | relative_url }}" alt="Illustration: we'll be right back" loading="lazy">
+  <div>
+    <p class="eyebrow">Error 404</p>
+    <h1>We couldn't find that page.</h1>
+    <p class="muted">It may have moved when we rebuilt the site.</p>
+    <a class="btn" href="{{ '/' | relative_url }}">Back to home {% include icon.html name="arrow" size=18 %}</a>
+  </div>
+</section>

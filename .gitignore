@@ -1,0 +1,42 @@
+# Jekyll build output & caches
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Ruby / Bundler
+.bundle/
+vendor/
+*.gem
+.byebug_history
+
+# Node (if any tooling is added later)
+node_modules/
+npm-debug.log*
+
+# Environment & secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Logs & temp files
+*.log
+*.tmp
+*.swp
+*~
+
+# OS files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

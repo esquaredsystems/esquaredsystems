@@ -1,0 +1,40 @@
+---
+title: Contact us
+eyebrow: Get in touch
+lead: Tell us about your project — we usually respond within one business day.
+permalink: /contact/
+layout: default
+---
+{% assign p = site.data.profile %}
+{% include page-hero.html title=page.title eyebrow=page.eyebrow lead=page.lead image="office.webp" %}
+<section class="section wrap contact">
+  <div class="contact-info">
+    <a class="card info reveal" href="tel:{{ p.phone_link }}"><span class="tile-icon">{% include icon.html name="phone" %}</span><div><h3>Call us</h3><p>{{ p.phone }}</p><p class="muted small">{{ p.hours }}</p></div></a>
+    <a class="card info reveal" href="mailto:{{ p.email }}"><span class="tile-icon">{% include icon.html name="mail" %}</span><div><h3>Email</h3><p>{{ p.email }}</p></div></a>
+    <a class="card info reveal" href="{{ p.map_link }}" rel="noopener"><span class="tile-icon">{% include icon.html name="pin" %}</span><div><h3>Office</h3><p>{{ p.address }}</p></div></a>
+  </div>
+  {% assign form_target = site.form_alias | default: site.form_email %}
+  <form class="card form reveal" id="contact-form" action="https://formsubmit.co/{{ form_target }}" data-ajax="https://formsubmit.co/ajax/{{ form_target }}" method="POST" novalidate>
+    <input type="hidden" name="_subject" value="New enquiry from esquaredsystems.com">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="{{ '/contact/?sent=1' | absolute_url }}">
+    <h2>Send a message</h2>
+    <div class="row">
+      <label>Name<input name="name" autocomplete="name" required></label>
+      <label>Email<input type="email" name="email" autocomplete="email" required></label>
+    </div>
+    <label><span>Company <span class="muted small">(optional)</span></span><input name="company" autocomplete="organization"></label>
+    <label>I'm interested in
+      <select name="service" id="service-select">
+        <option value="">Choose a service…</option>
+        {% for s in site.data.services %}<option>{{ s.title }}</option>{% endfor %}
+        <option>Something else</option>
+      </select>
+    </label>
+    <label>Message<textarea name="message" rows="5" required></textarea></label>
+    <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+    <button class="btn btn-lg" type="submit">Send message {% include icon.html name="arrow" size=18 %}</button>
+    <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+  </form>
+</section>

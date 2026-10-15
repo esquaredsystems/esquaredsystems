@@ -1,0 +1,7 @@
+id,category,title,icon,home,image,summary,tags
+web,Software Development,Web Development,web,yes,web-dev.webp,"We provide services for web app development, and we focus on user experience in terms of making a lightweight and responsive app that follows modern standards such as material and flat design.",Responsive UI|Material & flat design|Web apps
+integration,Software Development,Integration Services,integration,yes,services-page-image1.webp,"Why reinvent the wheel? Using microservice architecture we can enable two or more systems such as EMRs and CMSs, to communicate effectively and reliably.",Microservices|EMR|CMS|APIs
+mobile,Software Development,Mobile Development,mobile,yes,mobile-dev.webp,"Esquared Systems specializes in mobile app development with flexible and diverse applications through cross-platform development platforms.",Cross-platform|iOS|Android
+ml,Data Science,Machine Learning,ml,yes,machine-learning.webp,"In the age of AI-powered machines, it's the need of the hour for small to large corporations to adopt. Esquared Systems offers a broad range of solutions.",Computer Vision|Large Language Models|NLP|Recommender Systems|Geospatial Clustering
+analytics,Data Science,Data Analytics,analytics,no,data-analytics.webp,"Turn raw data into decisions with dashboards, data pipelines and statistical analysis.",Dashboards|Pipelines|Reporting
+agentic,Data Science,Agentic AI,agent,no,agentic-ai-edited.webp,"Autonomous, tool-using AI agents that automate real business workflows end to end.",LLM agents|Automation|Tool use

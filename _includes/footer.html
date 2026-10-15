@@ -1,0 +1,24 @@
+{% assign p = site.data.profile %}
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand" href="{{ '/' | relative_url }}"><span class="logo" aria-hidden="true"></span><span class="brand-name">{{ site.title }}</span></a>
+      <p class="muted">{{ site.tagline }}</p>
+    </div>
+    <div>
+      <h4>Company</h4>
+      {% for n in site.nav %}<a href="{{ n.url | relative_url }}">{{ n.title }}</a>{% endfor %}
+    </div>
+    <div>
+      <h4>Services</h4>
+      {% for s in site.data.services %}<a href="{{ '/services/' | relative_url }}#{{ s.id }}">{{ s.title }}</a>{% endfor %}
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <a href="mailto:{{ p.email }}">{{ p.email }}</a>
+      <a href="tel:{{ p.phone_link }}">{{ p.phone }}</a>
+      <span class="muted">{{ p.address }}</span>
+    </div>
+  </div>
+  <div class="wrap footer-base muted"><span>© {{ 'now' | date: '%Y' }} {{ site.title }}. All rights reserved.</span><span>Karachi, Pakistan</span></div>
+</footer>

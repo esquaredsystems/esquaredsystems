@@ -1,0 +1,81 @@
+---
+layout: default
+title: Home
+body_class: home
+---
+{% assign p = site.data.profile %}
+<section class="hero">
+  <img class="hero-bg" src="{{ '/assets/img/home2.webp' | relative_url }}" alt="" aria-hidden="true" fetchpriority="high">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <p class="eyebrow pill"><span class="dot"></span> Software · Integration · Data Science · AI</p>
+    <h1>{{ site.tagline }}</h1>
+    <p class="hero-rotator">We build <span class="rotator" data-words='{{ site.hero_words | jsonify }}'>{{ site.hero_words | first }}</span></p>
+    <p class="lead">{{ p.mission }}</p>
+    <div class="hero-actions">
+      <a class="btn btn-lg" href="{{ '/contact/' | relative_url }}">Start a project {% include icon.html name="arrow" size=18 %}</a>
+      <a class="btn btn-lg btn-ghost" href="{{ '/services/' | relative_url }}">Explore services</a>
+    </div>
+  </div>
+</section>
+
+{% assign tags = "" %}{% for s in site.data.services %}{% assign tags = tags | append: s.tags | append: "|" %}{% endfor %}
+{% assign tags = tags | split: "|" | uniq %}
+<div class="marquee" aria-label="Capabilities">
+  <div class="marquee-track">
+    {% for i in (1..2) %}<ul{% if i == 2 %} aria-hidden="true"{% endif %}>{% for t in tags %}{% if t != "" %}<li>{{ t }}</li>{% endif %}{% endfor %}</ul>{% endfor %}
+  </div>
+</div>
+
+<section class="section wrap">
+  <div class="section-head reveal">
+    <p class="eyebrow">What we do</p>
+    <h2>From first commit to production AI</h2>
+    <p class="muted">Two practices, one team: software engineering that ships, and data science that makes it smarter.</p>
+  </div>
+  <div class="bento">
+    {% for s in site.data.services %}
+    <a class="tile reveal {% if forloop.index == 1 or forloop.index == 4 or forloop.index == 6 %}tile-wide{% endif %}" href="{{ '/services/' | relative_url }}#{{ s.id }}">
+      <img src="{{ '/assets/img/' | append: s.image | relative_url }}" alt="" loading="lazy">
+      <div class="tile-body">
+        <span class="tile-icon">{% include icon.html name=s.icon %}</span>
+        <p class="tile-cat">{{ s.category }}</p>
+        <h3>{{ s.title }}</h3>
+        <p>{{ s.summary | truncatewords: 22 }}</p>
+        <span class="link-arrow">Learn more {% include icon.html name="arrow" size=16 %}</span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section split-section">
+  <div class="wrap split">
+    <div class="split-media reveal">
+      <img src="{{ '/assets/img/about-page-image1-edited.webp' | relative_url }}" alt="The Esquared Systems team collaborating" loading="lazy">
+    </div>
+    <div class="reveal">
+      <p class="eyebrow">Why Esquared</p>
+      <h2>{{ p.seek_lead }}</h2>
+      <p class="muted">{{ p.seek_body }}</p>
+      <ul class="checks">{% for c in p.commitments %}<li>{% include icon.html name="check" size=18 %} {{ c }}</li>{% endfor %}</ul>
+      <a class="link-arrow" href="{{ '/about/' | relative_url }}">More about us {% include icon.html name="arrow" size=16 %}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head reveal"><p class="eyebrow">Modus operandi</p><h2>How we work</h2></div>
+  <ol class="values">
+    {% for v in site.data.values %}
+    <li class="value reveal">
+      <img src="{{ '/assets/img/' | append: v.image | relative_url }}" alt="" loading="lazy">
+      <span class="value-num">0{{ forloop.index }}</span>
+      <h3>{{ v.title }}</h3>
+      <p class="muted">{{ v.text }}</p>
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+{% include cta.html %}

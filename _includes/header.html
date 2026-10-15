@@ -1,0 +1,16 @@
+<a class="skip" href="#content">Skip to content</a>
+<header class="site-header" data-header>
+  <div class="wrap bar">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="{{ site.title }} home">
+      <span class="logo" aria-hidden="true"></span><span class="brand-name">{{ site.title }}</span>
+    </a>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      {% for n in site.nav %}<a href="{{ n.url | relative_url }}"{% if page.url == n.url or page.url contains n.url and n.url != "/" %} aria-current="page"{% endif %}>{{ n.title }}</a>{% endfor %}
+      <a class="btn btn-sm" href="{{ '/contact/' | relative_url }}">Start a project</a>
+    </nav>
+    <div class="bar-actions">
+      <button class="icon-btn" id="theme-toggle" type="button" aria-label="Toggle colour theme">{% include icon.html name="sun" class="i-sun" size=20 %}{% include icon.html name="moon" class="i-moon" size=20 %}</button>
+      <button class="icon-btn nav-toggle" id="nav-toggle" type="button" aria-controls="site-nav" aria-expanded="false" aria-label="Open menu">{% include icon.html name="menu" size=22 %}</button>
+    </div>
+  </div>
+</header>

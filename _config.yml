@@ -1,0 +1,38 @@
+title: Esquared Systems
+short_name: Esquared
+tagline: Build your tomorrow today.
+description: Esquared Systems builds web and mobile apps, systems integrations, and data science & AI solutions for organizations in Pakistan and worldwide.
+url: "https://esquaredsystems.com"
+baseurl: ""
+lang: en
+
+# Top navigation (order matters)
+nav:
+  - {title: About, url: /about/}
+  - {title: Services, url: /services/}
+  - {title: Portfolio, url: /portfolio/}
+  - {title: Contact, url: /contact/}
+
+# Words that rotate in the home hero ("We build ___")
+hero_words: [web apps, integrations, mobile apps, ML models, AI agents]
+
+# Contact form: submissions are emailed to this address via FormSubmit (https://formsubmit.co).
+# The FIRST submission sends a one-time activation email to this inbox — click "Activate Form".
+# After activating, FormSubmit also gives you a random alias (e.g. 4f3c9a...); put it in
+# form_alias to keep the address out of the page source. Leave form_alias empty until then.
+form_email: info@esquaredsystems.com
+form_alias: ""
+
+collections:
+  projects:
+    output: true
+    permalink: /portfolio/:name/
+
+defaults:
+  - scope: {path: ""}
+    values: {layout: page}
+  - scope: {path: "", type: projects}
+    values: {layout: project}
+
+plugins: [jekyll-sitemap, jekyll-seo-tag]
+exclude: [README.md, Gemfile, Gemfile.lock, vendor, .DS_Store]

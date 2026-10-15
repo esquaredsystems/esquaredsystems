@@ -1,0 +1,62 @@
+---
+title: About us
+eyebrow: Who we are
+permalink: /about/
+hero_image: about-page-image2.webp
+layout: default
+---
+{% assign p = site.data.profile %}
+{% include page-hero.html title=page.title eyebrow=page.eyebrow lead=p.seek_lead image=page.hero_image %}
+
+<section class="section wrap split">
+  <div class="reveal">
+    <p class="eyebrow">{{ p.seek_title }}</p>
+    <h2>Goal seekers, creators, challenge enthusiasts.</h2>
+    <p class="muted">{{ p.seek_body }}</p>
+    <p>To our customers, our commitment is to:</p>
+    <ul class="checks">{% for c in p.commitments %}<li>{% include icon.html name="check" size=18 %} {{ c }}</li>{% endfor %}</ul>
+  </div>
+  <div class="split-media reveal"><img src="{{ '/assets/img/about-page-image1-edited.webp' | relative_url }}" alt="Team members working together at a laptop" loading="lazy"></div>
+</section>
+
+<section class="section wrap">
+  <div class="vm">
+    <article class="card reveal"><span class="tile-icon">{% include icon.html name="eye" %}</span><h3>Vision</h3><p class="muted">{{ p.vision }}</p></article>
+    <article class="card reveal"><span class="tile-icon">{% include icon.html name="target" %}</span><h3>Mission</h3><p class="muted">{{ p.mission }}</p></article>
+  </div>
+</section>
+
+<section class="section wrap">
+  <div class="section-head reveal"><p class="eyebrow">Modus operandi</p><h2>How we work</h2></div>
+  <ol class="values">
+    {% for v in site.data.values %}
+    <li class="value reveal"><img src="{{ '/assets/img/' | append: v.image | relative_url }}" alt="" loading="lazy"><span class="value-num">0{{ forloop.index }}</span><h3>{{ v.title }}</h3><p class="muted">{{ v.text }}</p></li>
+    {% endfor %}
+  </ol>
+</section>
+
+<section class="section wrap" id="team">
+  <div class="team-head reveal">
+    <div class="section-head"><p class="eyebrow">The team behind</p><h2>{{ p.team_motto }}</h2></div>
+    <div class="carousel-nav">
+      <button class="icon-btn" type="button" data-carousel-prev aria-label="Previous team members" aria-controls="team-track"><span class="flip">{% include icon.html name="arrow" size=18 %}</span></button>
+      <button class="icon-btn" type="button" data-carousel-next aria-label="Next team members" aria-controls="team-track">{% include icon.html name="arrow" size=18 %}</button>
+    </div>
+  </div>
+  <div class="team" id="team-track" data-carousel tabindex="0" role="region" aria-roledescription="carousel" aria-label="Team members">
+    {% for m in site.data.team %}
+    <article class="member reveal">
+      <div class="member-photo"><img src="{{ '/assets/img/' | append: m.photo | relative_url }}" alt="Portrait of {{ m.name }}" loading="lazy"></div>
+      <h3>{{ m.name }}</h3>
+      <p class="muted">{{ m.role }}</p>
+      {% if m.linkedin or m.portfolio or m.twitter %}<div class="socials">
+        {% if m.linkedin %}<a href="{{ m.linkedin }}" aria-label="{{ m.name }} on LinkedIn" title="LinkedIn" target="_blank" rel="noopener">{% include icon.html name="linkedin" size=18 %}</a>{% endif %}
+        {% if m.portfolio %}<a href="{{ m.portfolio }}" aria-label="{{ m.name }}'s portfolio" title="Portfolio" target="_blank" rel="noopener">{% include icon.html name="globe" size=18 %}</a>{% endif %}
+        {% if m.twitter %}<a href="{{ m.twitter }}" aria-label="{{ m.name }} on X" title="X" target="_blank" rel="noopener">{% include icon.html name="twitter" size=18 %}</a>{% endif %}
+      </div>{% endif %}
+    </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% include cta.html title="Join us! Feeling inspired?" %}

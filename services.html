@@ -1,0 +1,31 @@
+---
+title: Services
+eyebrow: What we do
+lead: Software development and data science under one roof — built to be lightweight, reliable and ready to scale.
+permalink: /services/
+hero_image: home1.webp
+layout: default
+---
+{% include page-hero.html title=page.title eyebrow=page.eyebrow lead=page.lead image=page.hero_image %}
+{% assign cats = site.data.services | map: "category" | uniq %}
+<section class="section wrap">
+  <div class="filters" role="group" aria-label="Filter services">
+    <button class="chip is-active" type="button" data-filter="all" aria-pressed="true">All</button>
+    {% for c in cats %}<button class="chip" type="button" data-filter="{{ c | slugify }}" aria-pressed="false">{{ c }}</button>{% endfor %}
+  </div>
+  <div class="service-list" data-filterable>
+    {% for s in site.data.services %}
+    <article class="service reveal" id="{{ s.id }}" data-category="{{ s.category | slugify }}">
+      <div class="service-media"><img src="{{ '/assets/img/' | append: s.image | relative_url }}" alt="" loading="lazy"></div>
+      <div class="service-body">
+        <p class="tile-cat"><span class="tile-icon sm">{% include icon.html name=s.icon size=18 %}</span> {{ s.category }}</p>
+        <h2>{{ s.title }}</h2>
+        <p class="muted">{{ s.summary }}</p>
+        <ul class="tags">{% assign t = s.tags | split: "|" %}{% for x in t %}<li>{{ x }}</li>{% endfor %}</ul>
+        <a class="link-arrow" href="{{ '/contact/' | relative_url }}?service={{ s.title | url_encode }}">Discuss your project {% include icon.html name="arrow" size=16 %}</a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% include cta.html %}
